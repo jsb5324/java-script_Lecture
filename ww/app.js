@@ -13,6 +13,8 @@ const startBtn = document.querySelectorAll("#startBtn");
 const stopBtn = document.querySelector("#stopBtn");
 const display = document.querySelector("#display");
 
+let playerLoc
+
 //생략
 let playerLoc = stageSize*(stageSize-2)+7 //202;
 
@@ -47,3 +49,17 @@ function makeInvader() { }
 function moveInvader() { }
 
 interval = setInterval(moveInvader, 1000);
+
+function moveInvader() {
+    invadersLoc.forEach(function(invader){
+        stage[invader].classList.remove("invader");
+    })
+}
+
+function gameStart() {
+    displayStatus();
+    gameInterval = setInterval(gameRun, 1000); //수정
+    document.addEventListener("keyup", movePlayer);
+    gameRun();
+}
+ 
